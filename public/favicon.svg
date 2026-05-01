@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Sol Seven Studios">
+  <rect width="64" height="64" rx="18" fill="#f8fbf8"/>
+  <path d="M18 15h31L29 49H15l17-23H18z" fill="none" stroke="#071111" stroke-linejoin="round" stroke-width="5"/>
+  <circle cx="43" cy="19" r="7" fill="#b8f05f" opacity=".78"/>
+  <path d="M12 47c11-8 27-9 40-3" fill="none" stroke="#38d6d3" stroke-linecap="round" stroke-width="4" opacity=".68"/>
+</svg>
