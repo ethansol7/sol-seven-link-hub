@@ -35,6 +35,8 @@ export const DISCOUNT_CODE = 'ICFFSOL15%'
 export const LEAD_CAPTURE_ENDPOINT = ''
 export const LOCAL_LEADS_STORAGE_KEY = 'solseven_linkhub_leads'
 
+const assetPath = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
+
 const linkCards = [
   {
     title: 'Sol Seven Studios',
@@ -505,7 +507,7 @@ function App() {
     <div className="site-shell">
       <header className="topbar">
         <a className="brand-lockup" href="#top" aria-label="Sol Seven Studios home">
-          <img src="/assets/brand/sol-seven-mark.png" alt="" />
+          <img src={assetPath('assets/brand/sol-seven-mark.png')} alt="" />
           <span>
             <strong>Sol Seven Studios</strong>
             <small>Ethan Solodukhin</small>
@@ -543,7 +545,7 @@ function App() {
 
           <div className="hero-product" aria-label="SOL lamp collection preview">
             <div className="product-glass">
-              <img src="/assets/sol/sol-hero-collection.png" alt="SOL lamp collection" />
+              <img src={assetPath('assets/sol/sol-hero-collection.png')} alt="SOL lamp collection" />
               <div className="product-caption">
                 <span>SOL Lamp System</span>
                 <strong>Buy or inquire through Sol Seven Studios</strong>
@@ -580,7 +582,7 @@ function App() {
               </div>
             </div>
             <div className="funnel-image">
-              <img src="/assets/sol/sol-lamp-collection.png" alt="SOL lamps arranged as a product collection" />
+              <img src={assetPath('assets/sol/sol-lamp-collection.png')} alt="SOL lamps arranged as a product collection" />
             </div>
           </div>
 
