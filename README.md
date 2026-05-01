@@ -37,14 +37,21 @@ The placeholder social links are intentionally obvious. Replace them with the re
 The lamp/product links are also constants in `src/App.jsx`:
 
 ```js
-export const SOL_LAMP_BUY_URL = SOL_SEVEN_STUDIOS_URL
-export const S01_LAMP_BUY_URL = SOL_SEVEN_STUDIOS_URL
-export const S02_LAMP_BUY_URL = SOL_SEVEN_STUDIOS_URL
-export const S03_LAMP_BUY_URL = SOL_SEVEN_STUDIOS_URL
-export const ORIGINAL_SOL_COLLECTION_URL = SOL_SEVEN_STUDIOS_URL
+export const WIX_SHOP_URL = 'https://www.solsevenstudios.com/shop'
+export const SOL_LAMP_BUY_URL = WIX_SHOP_URL
+export const S01_LAMP_BUY_URL = 'https://www.solsevenstudios.com/product-page/s01'
+export const S02_LAMP_BUY_URL = 'https://www.solsevenstudios.com/product-page/s02'
+export const S03_LAMP_BUY_URL = 'https://www.solsevenstudios.com/product-page/s03'
+export const S04_LAMP_BUY_URL = 'https://www.solsevenstudios.com/product-page/s04'
+export const S01_SHADE_BUY_URL = 'https://www.solsevenstudios.com/product-page/s01-shade'
+export const S02_SHADE_BUY_URL = 'https://www.solsevenstudios.com/product-page/s02-shade'
+export const S03_SHADE_BUY_URL = 'https://www.solsevenstudios.com/product-page/s03-shade'
+export const S04_SHADE_BUY_URL = 'https://www.solsevenstudios.com/product-page/s04-shade'
+export const SOL_PLANTER_BUY_URL = 'https://www.solsevenstudios.com/product-page/s0l-planter'
+export const SOL_COMBO_BUY_URL = 'https://www.solsevenstudios.com/product-page/s0-combo'
 ```
 
-Right now unknown product links point to `https://www.solsevenstudios.com/`. Swap each constant for its exact product or checkout URL when those pages are ready.
+Each product card points to a Wix product page so visitors can use Wix checkout. The hero `Shop SOL Lamps` CTA points to the Wix shop overview.
 
 ## Change Discount Code
 
@@ -111,4 +118,20 @@ https://ethansol7.github.io/sol-seven-link-hub/
 
 ## Asset Notes
 
-SOL imagery and the Sol Seven mark are included under `public/assets`. Replace those files with final studio/product assets whenever you want updated visuals without changing component code.
+SOL imagery and the Sol Seven mark are included under `public/assets`.
+
+Stable product card images live in `public/assets/shop`:
+
+- `s01.png`
+- `s02.png`
+- `s03.png`
+- `s04.png`
+- `s01-shade.png`
+- `s02-shade.png`
+- `s03-shade.png`
+- `s04-shade.png`
+- `s0l-planter.png`
+- `s0l-combo.png`
+- `s0l-stack.png`
+
+The page uses these local files instead of hotlinking Wix images, so the lamp visuals stay constant even if the Wix CDN filenames change.

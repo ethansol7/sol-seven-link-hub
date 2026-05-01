@@ -24,11 +24,19 @@ export const PERSONAL_PORTFOLIO_URL = 'https://www.ethansolodukhin.com/'
 export const LINKEDIN_URL = 'PLACEHOLDER_LINKEDIN_URL'
 export const INSTAGRAM_URL = 'PLACEHOLDER_INSTAGRAM_URL'
 
-export const SOL_LAMP_BUY_URL = SOL_SEVEN_STUDIOS_URL
-export const S01_LAMP_BUY_URL = SOL_SEVEN_STUDIOS_URL
-export const S02_LAMP_BUY_URL = SOL_SEVEN_STUDIOS_URL
-export const S03_LAMP_BUY_URL = SOL_SEVEN_STUDIOS_URL
-export const ORIGINAL_SOL_COLLECTION_URL = SOL_SEVEN_STUDIOS_URL
+export const WIX_SHOP_URL = 'https://www.solsevenstudios.com/shop'
+export const SOL_LAMP_BUY_URL = WIX_SHOP_URL
+export const S01_LAMP_BUY_URL = 'https://www.solsevenstudios.com/product-page/s01'
+export const S02_LAMP_BUY_URL = 'https://www.solsevenstudios.com/product-page/s02'
+export const S03_LAMP_BUY_URL = 'https://www.solsevenstudios.com/product-page/s03'
+export const S04_LAMP_BUY_URL = 'https://www.solsevenstudios.com/product-page/s04'
+export const S01_SHADE_BUY_URL = 'https://www.solsevenstudios.com/product-page/s01-shade'
+export const S02_SHADE_BUY_URL = 'https://www.solsevenstudios.com/product-page/s02-shade'
+export const S03_SHADE_BUY_URL = 'https://www.solsevenstudios.com/product-page/s03-shade'
+export const S04_SHADE_BUY_URL = 'https://www.solsevenstudios.com/product-page/s04-shade'
+export const SOL_PLANTER_BUY_URL = 'https://www.solsevenstudios.com/product-page/s0l-planter'
+export const SOL_COMBO_BUY_URL = 'https://www.solsevenstudios.com/product-page/s0-combo'
+export const ORIGINAL_SOL_COLLECTION_URL = WIX_SHOP_URL
 export const CUSTOM_ICFF_INQUIRY_URL = '#contact'
 
 export const DISCOUNT_CODE = 'ICFFSOL15%'
@@ -36,6 +44,7 @@ export const LEAD_CAPTURE_ENDPOINT = ''
 export const LOCAL_LEADS_STORAGE_KEY = 'solseven_linkhub_leads'
 
 const assetPath = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
+const shopImage = (name) => assetPath(`assets/shop/${name}`)
 
 const linkCards = [
   {
@@ -77,35 +86,95 @@ const linkCards = [
 
 const lampCards = [
   {
-    title: 'Original SOL Lamp',
-    description: 'The first modular SOL lighting object: sculptural, configurable, and built around repairable parts.',
-    cta: 'Buy Now',
-    href: ORIGINAL_SOL_COLLECTION_URL,
-  },
-  {
-    title: 'SOL Lamp S01',
-    description: 'A compact desk-scale lamp for clean workspaces, gallery shelves, and launch collectors.',
+    title: 'S01',
+    category: 'Table Light',
+    price: '$70.00',
+    image: shopImage('s01.png'),
+    description: 'A sculptural modular table lamp with customizable RGB illumination.',
     cta: 'Buy Now',
     href: S01_LAMP_BUY_URL,
   },
   {
-    title: 'SOL Lamp S02',
-    description: 'A taller statement profile with the same modular language and collectible SOL silhouette.',
+    title: 'S02',
+    category: 'Table Light',
+    price: '$70.00',
+    image: shopImage('s02.png'),
+    description: 'A minimal, versatile table lamp for broad ambient lighting and daily color control.',
     cta: 'Buy Now',
     href: S02_LAMP_BUY_URL,
   },
   {
-    title: 'SOL Lamp S03',
-    description: 'A bolder fixture expression for people who want the lamp to anchor the room.',
+    title: 'S03',
+    category: 'Table Light',
+    price: '$70.00',
+    image: shopImage('s03.png'),
+    description: 'A warm organic lamp profile with a refined, inviting silhouette.',
     cta: 'Buy Now',
     href: S03_LAMP_BUY_URL,
   },
   {
-    title: 'Custom / ICFF Inquiry',
-    description: 'For wholesale, custom finishes, press, collaborations, and ICFF follow-up conversations.',
-    cta: 'Inquire',
-    href: CUSTOM_ICFF_INQUIRY_URL,
-    intent: 'inquire',
+    title: 'S04',
+    category: 'Table Light',
+    price: '$70.00',
+    image: shopImage('s04.png'),
+    description: 'A sharper geometric SOL profile with layered visual rhythm.',
+    cta: 'Buy Now',
+    href: S04_LAMP_BUY_URL,
+  },
+  {
+    title: 'S01 Shade',
+    category: 'Shade',
+    price: '$15.00',
+    image: shopImage('s01-shade.png'),
+    description: 'The foundational stackable shade for the S0 modular system.',
+    cta: 'Buy Now',
+    href: S01_SHADE_BUY_URL,
+  },
+  {
+    title: 'S02 Shade',
+    category: 'Shade',
+    price: '$15.00',
+    image: shopImage('s02-shade.png'),
+    description: 'A soft curved shade for diffuse, ambient lighting and calm visual weight.',
+    cta: 'Buy Now',
+    href: S02_SHADE_BUY_URL,
+  },
+  {
+    title: 'S03 Shade',
+    category: 'Shade',
+    price: '$15.00',
+    image: shopImage('s03-shade.png'),
+    description: 'A wide dome shade that creates warm, even light and sculptural volume.',
+    cta: 'Buy Now',
+    href: S03_SHADE_BUY_URL,
+  },
+  {
+    title: 'S04 Shade',
+    category: 'Shade',
+    price: '$15.00',
+    image: shopImage('s04-shade.png'),
+    description: 'A bold geometric shade for stacked visual depth and interlocking expression.',
+    cta: 'Buy Now',
+    href: S04_SHADE_BUY_URL,
+  },
+  {
+    title: 'S0L Planter',
+    category: 'Add-On',
+    price: '$25.00',
+    image: shopImage('s0l-planter.png'),
+    description: 'A modular planter add-on that turns unused shades into functional decor.',
+    cta: 'Buy Now',
+    href: SOL_PLANTER_BUY_URL,
+  },
+  {
+    title: 'S0L Combo',
+    category: 'Bundle',
+    price: '$195.00 sale',
+    compareAt: '$210.00 regular',
+    image: shopImage('s0l-combo.png'),
+    description: 'The full modular lighting bundle with S01, S02, S03, bulbs, clips, and extra shades.',
+    cta: 'Buy Now',
+    href: SOL_COMBO_BUY_URL,
   },
 ]
 
@@ -284,29 +353,42 @@ function LinkHubCard({ card, index }) {
 }
 
 function LampCard({ lamp, index }) {
-  const isInquiry = lamp.intent === 'inquire'
-
   return (
     <article className="lamp-card reveal-card" style={{ '--delay': `${index * 70}ms` }}>
-      <div className="lamp-card-visual" aria-hidden="true">
-        <span className="lamp-core" />
-        <span className="lamp-ring" />
+      <div className="lamp-card-visual">
+        <img src={lamp.image} alt={`${lamp.title} product image`} loading="lazy" />
       </div>
       <div>
         <p className="lamp-index">{String(index + 1).padStart(2, '0')}</p>
+        <div className="lamp-card-meta">
+          <span>{lamp.category}</span>
+          <strong>
+            {lamp.compareAt && <em>{lamp.compareAt}</em>}
+            {lamp.price}
+          </strong>
+        </div>
         <h3>{lamp.title}</h3>
         <p>{lamp.description}</p>
       </div>
-      {isInquiry ? (
-        <InternalAction href={lamp.href} className="card-action inquiry-action">
-          {lamp.cta}
-        </InternalAction>
-      ) : (
-        <ExternalAction href={lamp.href} className="card-action buy-action">
-          {lamp.cta}
-        </ExternalAction>
-      )}
+      <ExternalAction href={lamp.href} className="card-action buy-action">
+        {lamp.cta}
+      </ExternalAction>
     </article>
+  )
+}
+
+function LampInquiryBand() {
+  return (
+    <div className="lamp-inquiry-band">
+      <div>
+        <span>Custom / ICFF Inquiry</span>
+        <h3>Need wholesale, press, custom orders, or ICFF follow-up?</h3>
+        <p>Send the studio a note and Ethan can route you to the right lamp, bundle, or collaboration path.</p>
+      </div>
+      <InternalAction href={CUSTOM_ICFF_INQUIRY_URL} className="card-action inquiry-action">
+        Start an Inquiry
+      </InternalAction>
+    </div>
   )
 }
 
@@ -545,10 +627,10 @@ function App() {
 
           <div className="hero-product" aria-label="SOL lamp collection preview">
             <div className="product-glass">
-              <img src={assetPath('assets/sol/sol-hero-collection.png')} alt="SOL lamp collection" />
+              <img src={shopImage('s0l-stack.png')} alt="Stacked SOL lamp system product render" />
               <div className="product-caption">
-                <span>SOL Lamp System</span>
-                <strong>Buy or inquire through Sol Seven Studios</strong>
+                <span>Original SOL Collection</span>
+                <strong>Checkout through the Wix shop</strong>
               </div>
             </div>
           </div>
@@ -569,20 +651,20 @@ function App() {
           <div className="funnel-layout">
             <div>
               <SectionIntro label="SOL Lamp Sales Funnel" title="Explore, choose, and head straight to buy.">
-                Product URLs are constants in code now. Swap them later when the exact Sol Seven product pages are live.
+                Every product card uses a stable local asset and links to its live Wix product page for checkout.
               </SectionIntro>
               <div className="funnel-steps" aria-label="SOL lamp shopping flow">
-                <span>Explore SOL Lamp System</span>
+                <span>Explore the live SOL catalog</span>
                 <ChevronRight size={18} />
-                <span>Choose a lamp or collection</span>
+                <span>Choose a listing</span>
                 <ChevronRight size={18} />
                 <span>Click Buy Now</span>
                 <ChevronRight size={18} />
-                <span>Go to Sol Seven Studios</span>
+                <span>Checkout on Wix</span>
               </div>
             </div>
             <div className="funnel-image">
-              <img src={assetPath('assets/sol/sol-lamp-collection.png')} alt="SOL lamps arranged as a product collection" />
+              <img src={shopImage('s0l-combo.png')} alt="S0L Combo product image" />
             </div>
           </div>
 
@@ -591,6 +673,7 @@ function App() {
               <LampCard lamp={lamp} index={index} key={lamp.title} />
             ))}
           </div>
+          <LampInquiryBand />
         </section>
 
         <section className="contact-section section-pad" id="contact" aria-labelledby="contact-title">
