@@ -852,6 +852,19 @@ img {
   min-width: 190px;
 }
 
+.submit-stack {
+  display: grid;
+  justify-items: end;
+  gap: 7px;
+}
+
+.signup-offer {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 750;
+  line-height: 1.3;
+}
+
 .secondary-action {
   color: var(--ink);
 }
@@ -903,6 +916,77 @@ button.primary-action:disabled {
 .success-actions {
   justify-content: center;
   margin-top: 24px;
+}
+
+.discount-modal-backdrop {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 22px;
+  background: rgba(237, 247, 242, 0.44);
+  backdrop-filter: blur(14px);
+  animation: modal-fade 240ms ease both;
+}
+
+.discount-modal {
+  width: min(100%, 470px);
+  padding: clamp(24px, 5vw, 38px);
+  border: 1px solid rgba(255, 255, 255, 0.74);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at 12% 8%, rgba(56, 214, 211, 0.16), transparent 30%),
+    linear-gradient(150deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.58)),
+    var(--glass);
+  box-shadow: 0 34px 100px rgba(7, 17, 17, 0.2);
+  text-align: center;
+  animation: modal-scale 240ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.discount-modal h3 {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(2.15rem, 6vw, 3.45rem);
+  line-height: 0.96;
+}
+
+.discount-modal p {
+  margin: 16px auto 0;
+  max-width: 340px;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.58;
+}
+
+.discount-modal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+@keyframes modal-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modal-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 .site-footer {
@@ -1022,9 +1106,19 @@ button.primary-action:disabled {
   .hero-actions .secondary-action,
   .hero-actions .ghost-action,
   .form-actions button,
+  .submit-stack,
+  .submit-stack .primary-action,
   .success-actions .action-link,
   .success-actions button {
     width: 100%;
+  }
+
+  .submit-stack {
+    justify-items: stretch;
+  }
+
+  .signup-offer {
+    text-align: center;
   }
 
   .product-caption {

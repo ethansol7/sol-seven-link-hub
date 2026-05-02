@@ -1,17 +1,14 @@
-import { useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import {
   ArrowRight,
-  BadgePercent,
   Blocks,
   Camera,
-  CheckCircle2,
   ChevronRight,
   Download,
   ExternalLink,
   Globe2,
   Link2,
   Mail,
-  RefreshCw,
   Send,
   ShoppingBag,
   Sparkles,
@@ -408,15 +405,56 @@ function LampInquiryBand() {
   )
 }
 
+function DiscountModal({ isOpen, onClose }) {
+  useEffect(() => {
+    if (!isOpen) return undefined
+
+    function handleKeyDown(event) {
+      if (event.key === 'Escape') {
+        onClose()
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [isOpen, onClose])
+
+  if (!isOpen) return null
+
+  return (
+    <div className="discount-modal-backdrop" onMouseDown={onClose}>
+      <div
+        className="discount-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="discount-modal-title"
+        onMouseDown={(event) => event.stopPropagation()}
+      >
+        <h3 id="discount-modal-title">You’re in</h3>
+        <p>Use code {DISCOUNT_CODE} for 10% off your first SOL Lamp.</p>
+        <div className="discount-modal-actions">
+          <a className="primary-action" href={SOL_SEVEN_CONFIGURATOR_URL}>
+            Start Building
+            <ArrowRight size={16} strokeWidth={2.2} />
+          </a>
+          <button className="secondary-action" type="button" onClick={onClose}>
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function LeadForm() {
   const [status, setStatus] = useState({ type: 'idle', message: '' })
   const [errors, setErrors] = useState({})
   const [hasLocalLeads, setHasLocalLeads] = useState(() => safeLocalRead().length > 0)
+  const [isDiscountModalOpen, setIsDiscountModalOpen] = useState(false)
   const recentSignature = useRef(null)
 
   const submitLabel = useMemo(() => {
     if (status.type === 'submitting') return 'Sending...'
-    if (status.type === 'success') return 'Sent'
     return 'Send Message'
   }, [status.type])
 
@@ -496,10 +534,8 @@ function LeadForm() {
 
       recentSignature.current = { signature, time: now }
       form.reset()
-      setStatus({
-        type: 'success',
-        message: `You're on the list. Use code ${DISCOUNT_CODE} for 10% off your first SOL Lamp.`,
-      })
+      setStatus({ type: 'idle', message: '' })
+      setIsDiscountModalOpen(true)
     } catch {
       setStatus({
         type: 'error',
@@ -508,99 +544,72 @@ function LeadForm() {
     }
   }
 
-  if (status.type === 'success') {
-    return (
-      <div className="success-panel" role="status">
-        <span className="success-icon">
-          <CheckCircle2 size={28} strokeWidth={2} />
-        </span>
-        <h3>You are on the list.</h3>
-        <p>{status.message}</p>
-        <div className="success-actions">
-          <ExternalAction href={SOL_SEVEN_STUDIOS_URL} className="primary-action">
-            Shop with code
-          </ExternalAction>
-          {hasLocalLeads && (
-            <button className="secondary-action" type="button" onClick={exportLeadsCsv}>
-              <Download size={16} strokeWidth={2.1} />
-              Download contacts
-            </button>
-          )}
-          <button className="ghost-action" type="button" onClick={() => setStatus({ type: 'idle', message: '' })}>
-            <RefreshCw size={16} strokeWidth={2.1} />
-            Submit another
-          </button>
-        </div>
-      </div>
-    )
-  }
-
   return (
-    <form className="lead-form" onSubmit={handleSubmit} noValidate>
-      <div className="form-grid two">
-        <label className="field">
-          <span>Name</span>
-          <input name="name" type="text" autoComplete="name" placeholder="Ethan Solodukhin" />
-          {errors.name && <small>{errors.name}</small>}
-        </label>
-        <label className="field">
-          <span>Email</span>
-          <input name="email" type="email" autoComplete="email" placeholder="you@example.com" />
-          {errors.email && <small>{errors.email}</small>}
-        </label>
-      </div>
-
-      <div className="form-grid two">
-        <label className="field">
-          <span>Phone optional</span>
-          <input name="phone" type="tel" autoComplete="tel" placeholder="(555) 000-0000" />
-        </label>
-        <label className="field">
-          <span>Interest type</span>
-          <select name="interestType" defaultValue="">
-            <option value="" disabled>
-              Select one
-            </option>
-            {interestTypes.map((type) => (
-              <option value={type} key={type}>
-                {type}
-              </option>
-            ))}
-          </select>
-          {errors.interestType && <small>{errors.interestType}</small>}
-        </label>
-      </div>
-
-      <label className="field">
-        <span>Message</span>
-        <textarea
-          name="message"
-          rows="5"
-          placeholder="Tell me what you have in mind."
-        />
-        {errors.message && <small>{errors.message}</small>}
-      </label>
-
-      {status.type === 'error' && <div className="form-alert">{status.message}</div>}
-
-      <div className="form-footer">
-        <p>
-          Your info stays private.
-        </p>
-        <div className="form-actions">
-          {hasLocalLeads && (
-            <button className="secondary-action" type="button" onClick={exportLeadsCsv}>
-              <Download size={16} strokeWidth={2.1} />
-              Download contacts
-            </button>
-          )}
-          <button className="primary-action" type="submit" disabled={status.type === 'submitting'}>
-            <Send size={16} strokeWidth={2.1} />
-            {submitLabel}
-          </button>
+    <>
+      <form className="lead-form" onSubmit={handleSubmit} noValidate>
+        <div className="form-grid two">
+          <label className="field">
+            <span>Name</span>
+            <input name="name" type="text" autoComplete="name" placeholder="Ethan Solodukhin" />
+            {errors.name && <small>{errors.name}</small>}
+          </label>
+          <label className="field">
+            <span>Email</span>
+            <input name="email" type="email" autoComplete="email" placeholder="you@example.com" />
+            {errors.email && <small>{errors.email}</small>}
+          </label>
         </div>
-      </div>
-    </form>
+
+        <div className="form-grid two">
+          <label className="field">
+            <span>Phone optional</span>
+            <input name="phone" type="tel" autoComplete="tel" placeholder="(555) 000-0000" />
+          </label>
+          <label className="field">
+            <span>Interest type</span>
+            <select name="interestType" defaultValue="">
+              <option value="" disabled>
+                Select one
+              </option>
+              {interestTypes.map((type) => (
+                <option value={type} key={type}>
+                  {type}
+                </option>
+              ))}
+            </select>
+            {errors.interestType && <small>{errors.interestType}</small>}
+          </label>
+        </div>
+
+        <label className="field">
+          <span>Message</span>
+          <textarea name="message" rows="5" placeholder="Tell me what you have in mind." />
+          {errors.message && <small>{errors.message}</small>}
+        </label>
+
+        {status.type === 'error' && <div className="form-alert">{status.message}</div>}
+
+        <div className="form-footer">
+          <p>Your info stays private.</p>
+          <div className="form-actions">
+            {hasLocalLeads && (
+              <button className="secondary-action" type="button" onClick={exportLeadsCsv}>
+                <Download size={16} strokeWidth={2.1} />
+                Download contacts
+              </button>
+            )}
+            <div className="submit-stack">
+              <span className="signup-offer">Get 10% off when you sign up</span>
+              <button className="primary-action" type="submit" disabled={status.type === 'submitting'}>
+                <Send size={16} strokeWidth={2.1} />
+                {submitLabel}
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <DiscountModal isOpen={isDiscountModalOpen} onClose={() => setIsDiscountModalOpen(false)} />
+    </>
   )
 }
 
@@ -695,13 +704,6 @@ function App() {
           <div className="contact-copy">
             <h2 id="contact-title">Get in touch</h2>
             <p>For orders, collaborations, or questions.</p>
-            <div className="code-card">
-              <BadgePercent size={24} strokeWidth={2} />
-              <span>
-                <strong>{DISCOUNT_CODE}</strong>
-                <small>ICFF offer</small>
-              </span>
-            </div>
           </div>
           <LeadForm />
         </section>
