@@ -54,14 +54,14 @@ const shopImage = (name) => assetPath(`assets/shop/${name}`)
 const linkCards = [
   {
     title: 'Sol Seven Studios',
-    description: 'The studio home for modular lighting, product systems, and circular design work.',
+    description: 'Modular lighting, product systems, and circular design.',
     cta: 'Visit Studio',
     href: SOL_SEVEN_CONFIGURATOR_URL,
     icon: Globe2,
   },
   {
     title: 'PlastiVista',
-    description: 'A circular manufacturing and product-design system for turning waste into finished objects.',
+    description: 'Circular production, material reuse, and product design research.',
     cta: 'Explore PlastiVista',
     href: PLASTIVISTA_URL,
     icon: Blocks,
@@ -399,7 +399,7 @@ function LampInquiryBand() {
       <div>
         <span>Custom / ICFF Inquiry</span>
         <h3>Need wholesale, press, custom orders, or ICFF follow-up?</h3>
-        <p>Send the studio a note and Ethan can route you to the right lamp, bundle, or collaboration path.</p>
+        <p>For wholesale, press, custom work, and ICFF conversations.</p>
       </div>
       <InternalAction href={CUSTOM_ICFF_INQUIRY_URL} className="card-action inquiry-action">
         Start an Inquiry
@@ -416,8 +416,8 @@ function LeadForm() {
 
   const submitLabel = useMemo(() => {
     if (status.type === 'submitting') return 'Sending...'
-    if (status.type === 'success') return 'Added'
-    return 'Join the Launch List'
+    if (status.type === 'success') return 'Sent'
+    return 'Send Message'
   }, [status.type])
 
   async function handleSubmit(event) {
@@ -523,7 +523,7 @@ function LeadForm() {
           {hasLocalLeads && (
             <button className="secondary-action" type="button" onClick={exportLeadsCsv}>
               <Download size={16} strokeWidth={2.1} />
-              Download CSV
+              Download contacts
             </button>
           )}
           <button className="ghost-action" type="button" onClick={() => setStatus({ type: 'idle', message: '' })}>
@@ -576,7 +576,7 @@ function LeadForm() {
         <textarea
           name="message"
           rows="5"
-          placeholder="Tell me what you are interested in buying, stocking, covering, or building together."
+          placeholder="Tell me what you have in mind."
         />
         {errors.message && <small>{errors.message}</small>}
       </label>
@@ -585,14 +585,13 @@ function LeadForm() {
 
       <div className="form-footer">
         <p>
-          Entries save locally in this browser and can be exported as CSV. Add an Apps Script endpoint later if you want
-          live spreadsheet capture.
+          Your info stays private.
         </p>
         <div className="form-actions">
           {hasLocalLeads && (
             <button className="secondary-action" type="button" onClick={exportLeadsCsv}>
               <Download size={16} strokeWidth={2.1} />
-              Export CSV
+              Download contacts
             </button>
           )}
           <button className="primary-action" type="submit" disabled={status.type === 'submitting'}>
@@ -627,10 +626,7 @@ function App() {
         <section className="hero-section" aria-labelledby="hero-title">
           <div className="hero-copy">
             <h1 id="hero-title">Ethan Solodukhin / Sol Seven Studios</h1>
-            <p>
-              Modular lighting, circular manufacturing, and product design systems built for the next generation of
-              objects.
-            </p>
+            <p>Modular lighting, circular production, and product design.</p>
             <div className="hero-actions" aria-label="Primary actions">
               <ExternalAction href={SOL_LAMP_BUY_URL} className="primary-action">
                 <ShoppingBag size={17} strokeWidth={2.2} />
@@ -638,7 +634,7 @@ function App() {
               </ExternalAction>
               <InternalAction href="#contact" className="secondary-action">
                 <Mail size={17} strokeWidth={2.2} />
-                Join the Launch List
+                Get in Touch
               </InternalAction>
               <ExternalAction href={PERSONAL_PORTFOLIO_URL} className="ghost-action">
                 View Portfolio
@@ -651,15 +647,15 @@ function App() {
               <img src={shopImage('s0l-stack.png')} alt="Stacked SOL lamp system product render" />
               <div className="product-caption">
                 <span>Original SOL Collection</span>
-                <strong>Checkout through the Wix shop</strong>
+                <strong>Shop the collection</strong>
               </div>
             </div>
           </div>
         </section>
 
         <section className="link-hub section-pad" id="links" aria-labelledby="links-title">
-          <SectionIntro label="Link Hub" title="One clean path into the studio world.">
-            Studio site, circular manufacturing work, portfolio, and social links in a premium mobile-first hub.
+          <SectionIntro label="Links" title="Sol Seven Studios">
+            Lighting systems and circular product design.
           </SectionIntro>
           <div className="hub-grid">
             {linkCards.map((card, index) => (
@@ -671,17 +667,15 @@ function App() {
         <section className="sales-funnel section-pad" id="shop" aria-labelledby="shop-title">
           <div className="funnel-layout">
             <div>
-              <SectionIntro label="SOL Lamp Sales Funnel" title="Explore, choose, and head straight to buy.">
-                Every product card uses a stable local asset and links to its live Wix product page for checkout.
-              </SectionIntro>
-              <div className="funnel-steps" aria-label="SOL lamp shopping flow">
-                <span>Explore the live SOL catalog</span>
+              <SectionIntro label="SOL Lamp System" title="Build your setup." />
+              <div className="funnel-steps" aria-label="SOL lamp setup">
+                <span>Explore SOL</span>
                 <ChevronRight size={18} />
-                <span>Choose a listing</span>
+                <span>Choose a lamp</span>
                 <ChevronRight size={18} />
-                <span>Click Buy Now</span>
+                <span>Add-ons</span>
                 <ChevronRight size={18} />
-                <span>Checkout on Wix</span>
+                <span>Finish your setup</span>
               </div>
             </div>
             <div className="funnel-image">
@@ -699,17 +693,13 @@ function App() {
 
         <section className="contact-section section-pad" id="contact" aria-labelledby="contact-title">
           <div className="contact-copy">
-            <p className="section-label">Lead Capture</p>
-            <h2 id="contact-title">Buy, stock, cover, or collaborate on SOL.</h2>
-            <p>
-              A focused launch-list form for lamp buyers, wholesale conversations, press, ICFF follow-up, custom
-              orders, and design collaborations.
-            </p>
+            <h2 id="contact-title">Get in touch</h2>
+            <p>For orders, collaborations, or questions.</p>
             <div className="code-card">
               <BadgePercent size={24} strokeWidth={2} />
               <span>
                 <strong>{DISCOUNT_CODE}</strong>
-                <small>Easy-to-edit discount constant</small>
+                <small>ICFF offer</small>
               </span>
             </div>
           </div>
