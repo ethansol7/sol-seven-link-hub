@@ -24,13 +24,15 @@ Open `src/App.jsx` and edit the constants near the top:
 
 ```js
 export const SOL_SEVEN_STUDIOS_URL = 'https://www.solsevenstudios.com/'
+export const SOL_SEVEN_CONFIGURATOR_URL = 'https://ethansol7.github.io/SolSevenStudios/'
 export const PLASTIVISTA_URL = 'https://ethansol7.github.io/plasti-vista-site/'
 export const PERSONAL_PORTFOLIO_URL = 'https://www.ethansolodukhin.com/'
-export const LINKEDIN_URL = 'PLACEHOLDER_LINKEDIN_URL'
-export const INSTAGRAM_URL = 'PLACEHOLDER_INSTAGRAM_URL'
+export const LINKEDIN_URL = 'https://www.linkedin.com/in/ethan-solodukhin/'
+export const STUDIO_INSTAGRAM_URL = 'https://www.instagram.com/solsevenstudios/'
+export const PERSONAL_INSTAGRAM_URL = 'https://www.instagram.com/ethansolodukhin/'
 ```
 
-The placeholder social links are intentionally obvious. Replace them with the real LinkedIn and Instagram URLs before sharing those cards publicly.
+`SOL_SEVEN_CONFIGURATOR_URL` is used only by the top/header brand link. `SOL_SEVEN_STUDIOS_URL` remains the Wix studio/shopping site used by the link hub, footer, and shopping calls to action.
 
 ## Change SOL Lamp Buy Links
 

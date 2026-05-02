@@ -19,10 +19,12 @@ import {
 import './App.css'
 
 export const SOL_SEVEN_STUDIOS_URL = 'https://www.solsevenstudios.com/'
+export const SOL_SEVEN_CONFIGURATOR_URL = 'https://ethansol7.github.io/SolSevenStudios/'
 export const PLASTIVISTA_URL = 'https://ethansol7.github.io/plasti-vista-site/'
 export const PERSONAL_PORTFOLIO_URL = 'https://www.ethansolodukhin.com/'
-export const LINKEDIN_URL = 'PLACEHOLDER_LINKEDIN_URL'
-export const INSTAGRAM_URL = 'PLACEHOLDER_INSTAGRAM_URL'
+export const LINKEDIN_URL = 'https://www.linkedin.com/in/ethan-solodukhin/'
+export const STUDIO_INSTAGRAM_URL = 'https://www.instagram.com/solsevenstudios/'
+export const PERSONAL_INSTAGRAM_URL = 'https://www.instagram.com/ethansolodukhin/'
 
 export const WIX_SHOP_URL = 'https://www.solsevenstudios.com/shop'
 export const SOL_LAMP_BUY_URL = WIX_SHOP_URL
@@ -79,10 +81,17 @@ const linkCards = [
     icon: Link2,
   },
   {
-    title: 'Instagram',
+    title: 'Sol Seven Studios Instagram',
     description: 'Studio process, launches, product moments, and visual updates from Sol Seven Studios.',
     cta: 'Follow',
-    href: INSTAGRAM_URL,
+    href: STUDIO_INSTAGRAM_URL,
+    icon: Camera,
+  },
+  {
+    title: "Ethan's Instagram",
+    description: 'Personal design process, product experiments, studio work, and behind-the-scenes updates.',
+    cta: 'Follow',
+    href: PERSONAL_INSTAGRAM_URL,
     icon: Camera,
   },
 ]
@@ -600,7 +609,7 @@ function App() {
   return (
     <div className="site-shell">
       <header className="topbar">
-        <a className="brand-lockup" href="#top" aria-label="Sol Seven Studios home">
+        <a className="brand-lockup" href={SOL_SEVEN_CONFIGURATOR_URL} aria-label="Sol Seven Studios configurator">
           <img src={assetPath('assets/brand/sol-seven-mark.png')} alt="" />
           <span>
             <strong>Sol Seven Studios</strong>
@@ -726,8 +735,11 @@ function App() {
           <ExternalAction href={LINKEDIN_URL} iconOnly>
             LinkedIn
           </ExternalAction>
-          <ExternalAction href={INSTAGRAM_URL} iconOnly>
-            Instagram
+          <ExternalAction href={STUDIO_INSTAGRAM_URL} iconOnly>
+            Studio Instagram
+          </ExternalAction>
+          <ExternalAction href={PERSONAL_INSTAGRAM_URL} iconOnly>
+            Ethan Instagram
           </ExternalAction>
         </nav>
       </footer>
