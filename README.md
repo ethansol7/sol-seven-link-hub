@@ -64,33 +64,54 @@ export const DISCOUNT_CODE = 'ICFFSOL15%'
 The post-submit success message uses this value automatically:
 
 ```text
-You’re on the list. Use code ICFFSOL15% for 10% off your first SOL Lamp.
+You're on the list. Use code ICFFSOL15% for 10% off your first SOL Lamp.
 ```
 
-## CSV Lead Capture
+## Google Sheets / CSV Lead Capture
 
 The form is static-site safe. It does not use private keys, fake credentials, or a hidden backend.
 
 Current behavior:
 
 - Every valid submission is saved to the visitor browser with `localStorage`.
+- Every valid submission is also posted to the Google Apps Script endpoint when `LEAD_CAPTURE_ENDPOINT` is filled in.
 - The form exposes an `Export CSV` / `Download CSV` button when local entries exist.
 - CSV filename: `sol-seven-launch-leads.csv`.
-- CSV columns: `timestamp,name,email,phone,interest_type,message,source_page,campaign,submission_id,capture_mode,discount_code`.
+- CSV columns: `timestamp,name,email,phone,interest_type,message,source_page,campaign,submission_id,capture_mode,discount_code,target_sheet,form_name`.
 
-This mirrors the PlastiVista static fallback style: local capture first, spreadsheet-friendly export, optional live endpoint later.
+This mirrors the PlastiVista static fallback style: spreadsheet-friendly browser backup plus optional live Google Sheets capture.
 
-Optional live spreadsheet capture:
-
-1. Create your own Google Sheet and Apps Script web app.
-2. Keep the web app URL private until you are ready to publish it.
-3. Paste the web app `/exec` URL into this constant:
+Live spreadsheet capture constants:
 
 ```js
-export const LEAD_CAPTURE_ENDPOINT = ''
+export const LEAD_CAPTURE_ENDPOINT =
+  'https://script.google.com/macros/s/AKfycbzbsyq90MK4_5MCOmCVn_YZ901hioj16a0EepEEnRvd5KqrFD07ATe-XkR81t4FaySE/exec'
+export const LEAD_CAPTURE_SHEET_NAME = 'ICFF Contact List'
+export const LEAD_CAPTURE_FORM_NAME = 'Sol Seven ICFF Link Hub'
 ```
 
-When `LEAD_CAPTURE_ENDPOINT` is filled in, the site sends a no-cors JSON payload to that endpoint and still keeps a local CSV backup in the visitor browser. Do not commit private service-account keys or backend credentials into this repo.
+The `/exec` URL is public client configuration for a static site, not a private key. Do not commit service-account keys or backend credentials.
+
+The form sends this no-cors JSON payload to Apps Script and still keeps a local CSV backup in the visitor browser:
+
+```js
+{
+  name,
+  email,
+  phone,
+  interestType,
+  message,
+  sourcePage,
+  campaign,
+  submissionId,
+  discountCode,
+  sheetName: 'ICFF Contact List',
+  targetSheet: 'ICFF Contact List',
+  formName: 'Sol Seven ICFF Link Hub'
+}
+```
+
+If the deployed Apps Script is still the original PlastiVista script with `const SHEET_NAME = "Waitlist";`, replace it with `google-apps-script/icff-contact-list.gs`, save, and deploy a new web app version. That script keeps PlastiVista submissions on `Waitlist` by default and routes this site to the `ICFF Contact List` tab when the payload includes `sheetName`.
 
 ## Deploy / Update GitHub Pages
 

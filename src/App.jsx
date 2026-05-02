@@ -40,7 +40,10 @@ export const ORIGINAL_SOL_COLLECTION_URL = WIX_SHOP_URL
 export const CUSTOM_ICFF_INQUIRY_URL = '#contact'
 
 export const DISCOUNT_CODE = 'ICFFSOL15%'
-export const LEAD_CAPTURE_ENDPOINT = ''
+export const LEAD_CAPTURE_ENDPOINT =
+  'https://script.google.com/macros/s/AKfycbzbsyq90MK4_5MCOmCVn_YZ901hioj16a0EepEEnRvd5KqrFD07ATe-XkR81t4FaySE/exec'
+export const LEAD_CAPTURE_SHEET_NAME = 'ICFF Contact List'
+export const LEAD_CAPTURE_FORM_NAME = 'Sol Seven ICFF Link Hub'
 export const LOCAL_LEADS_STORAGE_KEY = 'solseven_linkhub_leads'
 
 const assetPath = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
@@ -259,6 +262,8 @@ function exportLeadsCsv() {
     'submission_id',
     'capture_mode',
     'discount_code',
+    'target_sheet',
+    'form_name',
   ]
 
   const rows = entries.map((entry) => [
@@ -273,6 +278,8 @@ function exportLeadsCsv() {
     entry.submissionId,
     entry.captureMode,
     entry.discountCode,
+    entry.sheetName,
+    entry.formName,
   ])
 
   const csv = [headers, ...rows]
@@ -421,6 +428,9 @@ function LeadForm() {
       campaign: campaignContext.campaign,
       submissionId: createSubmissionId(),
       discountCode: DISCOUNT_CODE,
+      sheetName: LEAD_CAPTURE_SHEET_NAME,
+      targetSheet: LEAD_CAPTURE_SHEET_NAME,
+      formName: LEAD_CAPTURE_FORM_NAME,
     }
 
     const nextErrors = {}
@@ -452,9 +462,11 @@ function LeadForm() {
     setErrors({})
     setStatus({ type: 'submitting', message: '' })
 
+    const submittedAt = new Date().toISOString()
     const entry = {
       ...payload,
-      submittedAt: new Date().toISOString(),
+      timestamp: submittedAt,
+      submittedAt,
       captureMode: LEAD_CAPTURE_ENDPOINT ? 'endpoint-and-local' : 'static-local',
     }
 
@@ -477,7 +489,7 @@ function LeadForm() {
       form.reset()
       setStatus({
         type: 'success',
-        message: `You’re on the list. Use code ${DISCOUNT_CODE} for 10% off your first SOL Lamp.`,
+        message: `You're on the list. Use code ${DISCOUNT_CODE} for 10% off your first SOL Lamp.`,
       })
     } catch {
       setStatus({
