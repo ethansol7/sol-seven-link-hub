@@ -56,7 +56,7 @@ const linkCards = [
     title: 'Sol Seven Studios',
     description: 'The studio home for modular lighting, product systems, and circular design work.',
     cta: 'Visit Studio',
-    href: SOL_SEVEN_STUDIOS_URL,
+    href: SOL_SEVEN_CONFIGURATOR_URL,
     icon: Globe2,
   },
   {

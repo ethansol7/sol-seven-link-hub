@@ -32,7 +32,7 @@ export const STUDIO_INSTAGRAM_URL = 'https://www.instagram.com/solsevenstudios/'
 export const PERSONAL_INSTAGRAM_URL = 'https://www.instagram.com/ethansolodukhin/'
 ```
 
-`SOL_SEVEN_CONFIGURATOR_URL` is used only by the top/header brand link. `SOL_SEVEN_STUDIOS_URL` remains the Wix studio/shopping site used by the link hub, footer, and shopping calls to action.
+`SOL_SEVEN_CONFIGURATOR_URL` is used by the top/header brand link and the Sol Seven Studios `Visit Studio` card button. `SOL_SEVEN_STUDIOS_URL` remains the Wix studio/shopping site used by the footer and shopping calls to action.
 
 ## Change SOL Lamp Buy Links
 
