@@ -218,6 +218,20 @@ img {
   line-height: 1.42;
 }
 
+.hero-copy .patent-note {
+  width: fit-content;
+  margin-top: 18px;
+  padding: 7px 10px;
+  border: 1px solid rgba(7, 17, 17, 0.12);
+  border-radius: 999px;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.44);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -1007,6 +1021,14 @@ button.primary-action:disabled {
 .site-footer p {
   margin: 4px 0 0;
   font-size: 0.9rem;
+}
+
+.site-footer .footer-legal {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .site-footer nav {

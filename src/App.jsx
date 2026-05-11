@@ -310,7 +310,7 @@ function ExternalAction({ href, children, className = '', iconOnly = false }) {
       <span
         className={classes}
         aria-disabled="true"
-        title={`Replace ${href} in src/App.jsx before publishing this link.`}
+        title="Link pending"
       >
         {children}
         {!iconOnly && <ExternalLink size={16} strokeWidth={2.1} />}
@@ -354,7 +354,7 @@ function LinkHubCard({ card, index }) {
         <span className="icon-shell">
           <Icon size={22} strokeWidth={2} />
         </span>
-        <span className="link-status">{isPlaceholderUrl(card.href) ? 'Placeholder' : 'External'}</span>
+        <span className="link-status">{isPlaceholderUrl(card.href) ? 'Pending' : 'External'}</span>
       </div>
       <h3>{card.title}</h3>
       <p>{card.description}</p>
@@ -430,7 +430,7 @@ function DiscountModal({ isOpen, onClose }) {
         aria-labelledby="discount-modal-title"
         onMouseDown={(event) => event.stopPropagation()}
       >
-        <h3 id="discount-modal-title">You’re in</h3>
+        <h3 id="discount-modal-title">You're in</h3>
         <p>Use code {DISCOUNT_CODE} for 10% off your first SOL Lamp.</p>
         <div className="discount-modal-actions">
           <a className="primary-action" href={SOL_SEVEN_CONFIGURATOR_URL}>
@@ -634,8 +634,9 @@ function App() {
       <main id="top">
         <section className="hero-section" aria-labelledby="hero-title">
           <div className="hero-copy">
-            <h1 id="hero-title">Ethan Solodukhin / Sol Seven Studios</h1>
+            <h1 id="hero-title">Sol Seven Studios By Ethan Solodukhin</h1>
             <p>Modular lighting, circular production, and product design.</p>
+            <p className="patent-note">Patent Pending</p>
             <div className="hero-actions" aria-label="Primary actions">
               <ExternalAction href={SOL_LAMP_BUY_URL} className="primary-action">
                 <ShoppingBag size={17} strokeWidth={2.2} />
@@ -713,6 +714,7 @@ function App() {
         <div>
           <strong>Sol Seven Studios</strong>
           <p>Designed by Ethan Solodukhin</p>
+          <p className="footer-legal">&copy; Sol Seven Studios. Patent Pending.</p>
         </div>
         <nav aria-label="Footer links">
           <ExternalAction href={SOL_SEVEN_STUDIOS_URL} iconOnly>
