@@ -65,7 +65,7 @@ const linkCards = [
   },
   {
     title: "Ethan's Portfolio",
-    description: 'Selected product, industrial, brand, and systems design work by Ethan Solodukhin.',
+    description: 'Selected product, industrial, brand, and systems design work.',
     cta: 'View Portfolio',
     href: PERSONAL_PORTFOLIO_URL,
     icon: Sparkles,
@@ -621,7 +621,7 @@ function App() {
           <img src={assetPath('assets/brand/sol-seven-mark.png')} alt="" />
           <span>
             <strong>Sol Seven Studios</strong>
-            <small>Ethan Solodukhin</small>
+            <small>Product systems</small>
           </span>
         </a>
         <nav aria-label="Primary navigation">
@@ -634,7 +634,7 @@ function App() {
       <main id="top">
         <section className="hero-section" aria-labelledby="hero-title">
           <div className="hero-copy">
-            <h1 id="hero-title">Sol Seven Studios By Ethan Solodukhin</h1>
+            <h1 id="hero-title">Sol Seven Studios</h1>
             <p>Modular lighting, circular production, and product design.</p>
             <p className="patent-note">Patent Pending</p>
             <div className="hero-actions" aria-label="Primary actions">
@@ -713,7 +713,7 @@ function App() {
       <footer className="site-footer">
         <div>
           <strong>Sol Seven Studios</strong>
-          <p>Designed by Ethan Solodukhin</p>
+          <p>Modular lighting and circular product design.</p>
           <p className="footer-legal">&copy; Sol Seven Studios. Patent Pending.</p>
         </div>
         <nav aria-label="Footer links">
